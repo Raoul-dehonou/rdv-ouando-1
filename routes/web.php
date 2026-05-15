@@ -183,7 +183,8 @@ Route::middleware(['auth', 'role:medecin'])->prefix('medecin')->name('medecin.')
     Route::prefix('disponibilites')->name('disponibilites.')->group(function () {
         Route::get('/', [MedecinDisponibiliteController::class, 'index'])->name('index');
         Route::post('/', [MedecinDisponibiliteController::class, 'store'])->name('store');
-        Route::delete('/{id}', [MedecinDisponibiliteController::class, 'destroy'])->name('destroy');
+        // Modification ici : {id} devient {disponibilite} pour le model binding
+        Route::delete('/{disponibilite}', [MedecinDisponibiliteController::class, 'destroy'])->name('destroy');
     });
     
     // Consultations
